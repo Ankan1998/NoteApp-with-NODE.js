@@ -15,13 +15,10 @@ const addNote = function (title, body) {
         console.log("Note Exist");
     }
 
-    saveNote(notes);
+    utils.savenote(notes);
 
 };
 
-const saveNote = function (notes) {
-    fs.writeFileSync('notes.json', JSON.stringify(notes))
-};
 
 
 module.exports = {
