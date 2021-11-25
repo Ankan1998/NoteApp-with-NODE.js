@@ -17,6 +17,7 @@ yargs.command({
         }
     },
     handler: function(){
-        noteAdder.addnote(yargs.argv.title,yargs.argv.body);
+        noteAdder.addnote(yargs.argv.title, yargs.argv.body);
     }
 });
+yargs.parse();
