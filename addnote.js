@@ -2,12 +2,20 @@ const fs = require('fs');
 
 const addNote = function(title, body){
     notes = loadNote();
-    notes.push(
-        {
-            title:title,
-            body:body
-        }
-    );
+    const duplicate = notes.filter(function(note){
+        return note.title===title
+    });
+    if (duplicate.length==0){
+        notes.push(
+            {
+                title:title,
+                body:body
+            }
+        );
+    } else {
+        console.log("Note Exist");
+    }
+
     saveNote(notes);
 
 };
