@@ -14,7 +14,12 @@ const loadNote = function(){
     }
 };
 
+const saveNote = function (notes) {
+    fs.writeFileSync('notes.json', JSON.stringify(notes))
+};
+
 module.exports = {
     similarity:similarity,
-    loadnote:loadNote
+    loadnote:loadNote,
+    savenote: saveNote
 };
