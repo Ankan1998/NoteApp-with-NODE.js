@@ -5,8 +5,14 @@ const removeNote = function(title){
     const matched_element = notes.findIndex(function (note) {
         return utils.similarity(note, title)
     });
-    notes.splice(matched_element,1);
-    utils.savenote(notes);
+    if(matched_element>-1){
+        notes.splice(matched_element,1);
+        utils.savenote(notes);
+        console.log("deleted :" + title);
+    } else {
+        console.log("Note doesnt exist");
+    }
+
 }
 
 module.exports = {
