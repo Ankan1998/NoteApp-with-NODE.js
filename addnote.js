@@ -1,17 +1,16 @@
 const fs = require('fs');
+const utils = require('./utils.js');
 
-const addNote = function(title, body){
-    notes = loadNote();
-    const duplicate = notes.filter(function(note){
-        return note.title===title
+const addNote = function (title, body) {
+    notes = utils.loadnote();
+    const duplicate = notes.filter(function (note) {
+        return utils.similarity(note, title)
     });
-    if (duplicate.length==0){
-        notes.push(
-            {
-                title:title,
-                body:body
-            }
-        );
+    if (duplicate.length == 0) {
+        notes.push({
+            title: title,
+            body: body
+        });
     } else {
         console.log("Note Exist");
     }
@@ -20,19 +19,10 @@ const addNote = function(title, body){
 
 };
 
-const saveNote = function(notes){
+const saveNote = function (notes) {
     fs.writeFileSync('notes.json', JSON.stringify(notes))
 };
 
-const loadNote = function(){
-    try{
-        const loadedBuffer = fs.readFileSync('notes.json');
-        const dataJSON = JSON.parse(loadedBuffer.toString());
-        return dataJSON
-    } catch(e) {
-        return []
-    }
-};
 
 module.exports = {
     addnote: addNote
