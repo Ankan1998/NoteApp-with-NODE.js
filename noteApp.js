@@ -45,4 +45,19 @@ yargs.command({
         getNotes.getallnotes();
     }
 });
+
+yargs.command({
+    command: 'getNote',
+    describe: 'Get a Note',
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        },
+    },
+    handler: function(){
+        getNotes.getnote(yargs.argv.title);
+    }
+});
 yargs.parse();
