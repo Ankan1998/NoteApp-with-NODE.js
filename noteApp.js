@@ -1,6 +1,7 @@
 const yargs = require('yargs');
 const noteAdder = require('./addnote.js');
 const noteremover = require('./removeNote.js');
+const getNotes = require('./getNotes.js');
 // Customize yargs
 yargs.command({
     command: 'add',
@@ -34,6 +35,14 @@ yargs.command({
     },
     handler: function(){
         noteremover.removenote(yargs.argv.title);
+    }
+});
+
+yargs.command({
+    command: 'getAllNotes',
+    describe: 'Show all Notes',
+    handler: function(){
+        getNotes.getallnotes();
     }
 });
 yargs.parse();
