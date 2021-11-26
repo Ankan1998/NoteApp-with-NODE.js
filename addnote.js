@@ -1,5 +1,5 @@
-const fs = require('fs');
 const utils = require('./utils.js');
+const chalk = require('chalk');
 
 const addNote = function (title, body) {
     notes = utils.loadnote();
@@ -11,8 +11,9 @@ const addNote = function (title, body) {
             title: title,
             body: body
         });
+        console.log(chalk.black.bgGreen.bold("Note Added"));
     } else {
-        console.log("Note Exist");
+        console.log(chalk.bgRed.bold("Note Exist"));
     }
 
     utils.savenote(notes);
